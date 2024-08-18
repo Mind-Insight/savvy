@@ -12,7 +12,7 @@ export default function App() {
 		<SafeAreaView>
 			<Container>
 				<HeaderView></HeaderView>
-        <Block />
+                <Block />
 				<FooterView></FooterView>
 				<StatusBar style="auto" />
 			</Container>
