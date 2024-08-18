@@ -1,26 +1,40 @@
-import { View, Dimensions } from "react-native"
+import { View, Dimensions, ScaledSize } from "react-native"
+import { useState, useEffect } from "react"
 
 import styled from "styled-components/native"
 
-const { width } = Dimensions.get("window")
-console.log(width)
 const logoWidth = 164
 const searchWidth = 24
-const translateXValue = width / 2 - logoWidth / 2
 
 export default function HeaderView() {
+	const [screenWidth, setScreenWidth] = useState(Dimensions.get("window").width)
+
+	useEffect(() => {
+		const onChange = ({ window }: { window: ScaledSize }) => {
+			const { width } = window
+			setScreenWidth(width)
+		}
+		const subscription = Dimensions.addEventListener("change", onChange)
+		return () => {
+			subscription.remove()
+		}
+	}, [])
+	const translateXValue = screenWidth / 2 - logoWidth / 2
 	return (
 		<View>
 			<HeaderBlock>
 				<HeaderImage source={require("../assets/search.png")}></HeaderImage>
-				<HeaderLogo source={require("../assets/logo.png")}></HeaderLogo>
+				<HeaderLogo
+					style={{ transform: [{ translateX: translateXValue - searchWidth }] }}
+					source={require("../assets/logo.png")}
+				/>
 			</HeaderBlock>
 		</View>
 	)
 }
 
 const HeaderBlock = styled.View`
-    position: absolute;
+	position: absolute;
 	flex-direction: row;
 	align-items: center;
 	padding: 10px;
@@ -36,5 +50,4 @@ const HeaderLogo = styled.Image`
 	height: 24px;
 	position: absolute;
 	left: 50%;
-	transform: translateX(${translateXValue - searchWidth}px);
 `
