@@ -1,5 +1,5 @@
-import { View, Dimensions, ScaledSize } from "react-native"
-import { useState, useEffect } from "react"
+import { View, TouchableOpacity } from "react-native"
+import { useNavigation } from "@react-navigation/native"
 
 import styled from "styled-components/native"
 
@@ -7,47 +7,42 @@ const logoWidth = 164
 const searchWidth = 24
 
 export default function HeaderView() {
-	const [screenWidth, setScreenWidth] = useState(Dimensions.get("window").width)
-
-	useEffect(() => {
-		const onChange = ({ window }: { window: ScaledSize }) => {
-			const { width } = window
-			setScreenWidth(width)
-		}
-		const subscription = Dimensions.addEventListener("change", onChange)
-		return () => {
-			subscription.remove()
-		}
-	}, [])
-	const translateXValue = screenWidth / 2 - logoWidth / 2
+	const navigation = useNavigation()
 	return (
 		<View>
 			<HeaderBlock>
 				<HeaderImage source={require("../assets/search.png")}></HeaderImage>
-				<HeaderLogo
-					style={{ transform: [{ translateX: translateXValue - searchWidth }] }}
-					source={require("../assets/logo.png")}
-				/>
+				<LogoContainer>
+					<TouchableOpacity onPress={() => navigation.navigate("Compass")}>
+						<HeaderLogo source={require("../assets/logo.png")} />
+					</TouchableOpacity>
+				</LogoContainer>
+				<View style={{ width: searchWidth }} />
 			</HeaderBlock>
 		</View>
 	)
 }
 
+const LogoContainer = styled.View`
+	flex: 1;
+	align-items: center;
+`
+
 const HeaderBlock = styled.View`
-	position: absolute;
 	flex-direction: row;
 	align-items: center;
+	justify-content: space-between;
 	padding: 10px;
+	background-color: #ffffff;
 `
 
 const HeaderImage = styled.Image`
 	width: ${searchWidth}px;
-	height: 24px;
+	height: ${searchWidth}px;
+	margin-left: 10px;
 `
 
 const HeaderLogo = styled.Image`
 	width: ${logoWidth}px;
 	height: 24px;
-	position: absolute;
-	left: 50%;
 `
