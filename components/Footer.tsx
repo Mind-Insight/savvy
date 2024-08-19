@@ -1,29 +1,42 @@
-import { View, Dimensions } from "react-native"
-
+import React from "react"
+import { View, TouchableOpacity, Dimensions } from "react-native"
 import styled from "styled-components/native"
+import { useNavigation } from "@react-navigation/native"
 
 const { height } = Dimensions.get("window")
 
 export default function FooterView() {
+	const navigation = useNavigation()
 	return (
 		<View>
 			<FooterContainer>
-				<FooterBlock>
-					<FooterImage source={require("../assets/Notebook.png")}></FooterImage>
-					<FooterText>Дневник</FooterText>
-				</FooterBlock>
-				<FooterBlock>
-					<FooterImage source={require("../assets/Map.png")}></FooterImage>
-					<FooterText>Карты</FooterText>
-				</FooterBlock>
-				<FooterBlock>
-					<FooterImage source={require("../assets/Compass.png")}></FooterImage>
-					<FooterText>Компасс</FooterText>
-				</FooterBlock>
-				<FooterBlock>
-					<FooterImage source={require("../assets/Info.png")}></FooterImage>
-					<FooterText>Помощь</FooterText>
-				</FooterBlock>
+				<TouchableOpacity onPress={() => navigation.navigate("Diary")}>
+					<FooterBlock>
+						<FooterImage source={require("../assets/Notebook.png")} />
+						<FooterText>Дневник</FooterText>
+					</FooterBlock>
+				</TouchableOpacity>
+
+				<TouchableOpacity onPress={() => navigation.navigate("Maps")}>
+					<FooterBlock>
+						<FooterImage source={require("../assets/Map.png")} />
+						<FooterText>Карты</FooterText>
+					</FooterBlock>
+				</TouchableOpacity>
+
+				<TouchableOpacity onPress={() => navigation.navigate("Compass")}>
+					<FooterBlock>
+						<FooterImage source={require("../assets/Compass.png")} />
+						<FooterText>Компас</FooterText>
+					</FooterBlock>
+				</TouchableOpacity>
+
+				<TouchableOpacity onPress={() => navigation.navigate("Help")}>
+					<FooterBlock>
+						<FooterImage source={require("../assets/Info.png")} />
+						<FooterText>Помощь</FooterText>
+					</FooterBlock>
+				</TouchableOpacity>
 			</FooterContainer>
 		</View>
 	)
@@ -31,8 +44,7 @@ export default function FooterView() {
 
 const FooterContainer = styled.View`
 	flex-direction: row;
-	position: absolute;
-    top: ${height - 50}px;
+	
 	justify-content: space-around;
 	width: 100vw;
 	bordertop: 1px solid black;
