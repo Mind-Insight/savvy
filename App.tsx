@@ -9,14 +9,16 @@ import { createStackNavigator } from "@react-navigation/stack"
 
 import styled from "styled-components/native"
 
+
+
 import HeaderView from "components/Header"
 import FooterView from "components/Footer"
-import Block from "./components/Block"
 import Compass from "./components/Compass"
 import Diary from "components/Diary"
 import Help from "components/Help"
 import Map from "components/Map"
 import Home from "components/Home"
+import OpenedBlock from "components/OpenedBlock"
 
 const Stack = createStackNavigator()
 interface ScreenWithHeaderAndFooterProps {
@@ -68,7 +70,7 @@ export default function App() {
 				<Stack.Screen name="Compass">
 					{() => (
 						<ScreenWithHeaderAndFooter>
-							<Help />
+							<Compass />
 						</ScreenWithHeaderAndFooter>
 					)}
 				</Stack.Screen>
@@ -80,6 +82,7 @@ export default function App() {
 					)}
 				</Stack.Screen>
 			</Stack.Navigator>
+            <OpenedBlock></OpenedBlock>
 		</NavigationContainer>
 	)
 }

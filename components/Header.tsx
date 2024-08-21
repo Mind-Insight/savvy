@@ -1,4 +1,4 @@
-import { View, TouchableOpacity } from "react-native"
+import { View, TouchableOpacity, Pressable } from "react-native"
 import { useNavigation } from "@react-navigation/native"
 
 import styled from "styled-components/native"
@@ -13,9 +13,9 @@ export default function HeaderView() {
 			<HeaderBlock>
 				<HeaderImage source={require("../assets/search.png")}></HeaderImage>
 				<LogoContainer>
-					<TouchableOpacity onPress={() => navigation.navigate("Help")}>
+					<Pressable onPress={() => navigation.navigate("Help")}>
 						<HeaderLogo source={require("../assets/logo.png")} />
-					</TouchableOpacity>
+					</Pressable>
 				</LogoContainer>
 				<View style={{ width: searchWidth }} />
 			</HeaderBlock>
