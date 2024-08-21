@@ -1,4 +1,5 @@
 import { StatusBar } from "expo-status-bar"
+import React, { ReactNode } from 'react';
 import { SafeAreaView, StyleSheet, Text, View } from "react-native"
 import { Dimensions, ScaledSize } from "react-native"
 import { useState, useEffect } from "react"
@@ -18,8 +19,10 @@ import Map from "components/Map"
 import Home from "components/Home"
 
 const Stack = createStackNavigator()
-
-const ScreenWithHeaderAndFooter = ({ children }) => {
+interface ScreenWithHeaderAndFooterProps {
+    children: ReactNode;
+  }
+function ScreenWithHeaderAndFooter({ children }) {
 	return (
 		<>
 			<HeaderView />
@@ -32,6 +35,9 @@ const ScreenWithHeaderAndFooter = ({ children }) => {
 export default function App() {
 	return (
 		<NavigationContainer>
+            <View style={{height: 30}}>
+                <StatusBar backgroundColor="white" />
+            </View>
 			<Stack.Navigator
 				initialRouteName="Home"
 				screenOptions={{ headerShown: false }}
@@ -60,7 +66,7 @@ export default function App() {
 				<Stack.Screen name="Compass">
 					{() => (
 						<ScreenWithHeaderAndFooter>
-							<Compass />
+							<Help />
 						</ScreenWithHeaderAndFooter>
 					)}
 				</Stack.Screen>
@@ -72,6 +78,7 @@ export default function App() {
 					)}
 				</Stack.Screen>
 			</Stack.Navigator>
+
 		</NavigationContainer>
 	)
 }
