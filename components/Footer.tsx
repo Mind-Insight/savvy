@@ -44,9 +44,8 @@ export default function FooterView() {
 
 const FooterContainer = styled.View`
 	flex-direction: row;
-	
 	justify-content: space-around;
-	width: 100vw;
+	width: 100%;
 	bordertop: 1px solid black;
 	border-top-width: 2px;
 	border-top-color: #e4e4e4;
@@ -55,9 +54,6 @@ const FooterContainer = styled.View`
 
 const FooterBlock = styled.View`
 	align-items: center;
-	width: 90px;
-	height: 44px;
-	justify-content: center;
 `
 
 const FooterImage = styled.Image`

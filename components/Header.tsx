@@ -13,7 +13,7 @@ export default function HeaderView() {
 			<HeaderBlock>
 				<HeaderImage source={require("../assets/search.png")}></HeaderImage>
 				<LogoContainer>
-					<TouchableOpacity onPress={() => navigation.navigate("Compass")}>
+					<TouchableOpacity onPress={() => navigation.navigate("Help")}>
 						<HeaderLogo source={require("../assets/logo.png")} />
 					</TouchableOpacity>
 				</LogoContainer>
