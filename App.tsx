@@ -20,6 +20,7 @@ import Map from "components/Map"
 import Home from "components/Home"
 import OpenedBlock from "components/OpenedBlock"
 import Block from "components/Block"
+import Categories from "components/Categories"
 import { SafeAreaProvider } from "react-native-safe-area-context"
 import { FlatList, ScrollView } from "react-native-gesture-handler"
 
@@ -45,7 +46,7 @@ export default function App() {
 	return (
         <SafeAreaProvider>
             <NavigationContainer>
-                <View style={{ height: 30 }}>
+                <View style={{ height: 45 }}>
                     <StatusBar backgroundColor="white" />
                 </View>
                 <Stack.Navigator
@@ -56,6 +57,7 @@ export default function App() {
                         {() => (
                             <ScreenWithHeaderAndFooter>
                                 <ScrollView>
+                                    <Categories></Categories>
                                     <Block></Block>
                                     <Block></Block>
                                     <Block></Block>

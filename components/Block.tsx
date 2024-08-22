@@ -38,15 +38,17 @@ const styles = StyleSheet.create({
 		height: 166,
 	},
 	blockTitle: {
+        // --------- ПОДКЛЮЧИТЬ ШРИФТ SF Pro ---------
 		fontFamily: "sans-serif",
-		// fontWeight: 600,
+		fontWeight: "bold",
 		fontSize: 24,
 		width: "calc(100% - 36px)",
 		marginBottom: 6,
+        letterSpacing: 0.5,
 	},
 	blockText: {
 		fontFamily: "sans-serif",
-		// fontWeight: 300,
+		fontWeight: "medium",
 		fontSize: 10,
 		color: "#696969",
 		width: "calc(100% - 36px)",
@@ -55,11 +57,12 @@ const styles = StyleSheet.create({
         width: "95%",
 		flexDirection: "row",
 		padding: 16,
-		justifyContent: "space-between",
+		// gap: 35,
 		alignItems: "center",
 	},
 	blockTextContent: {
 		width: "calc(100% - 36px)",
+        marginRight: "10%",
 	},
     container: {
         flex: 1,
