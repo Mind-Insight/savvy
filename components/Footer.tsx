@@ -1,14 +1,15 @@
 import React from "react"
-import { View, TouchableOpacity, Dimensions, Pressable } from "react-native"
+import { View, Pressable } from "react-native"
 import styled from "styled-components/native"
 import { useNavigation } from "@react-navigation/native"
+import { TypeRootStackParamList } from "./types/types"
+import { NativeStackNavigationProp } from "react-native-screens/lib/typescript/native-stack/types"
 
-const { height } = Dimensions.get("window")
+type NavigationProp = NativeStackNavigationProp<TypeRootStackParamList>
 
 export default function FooterView() {
-	const navigation = useNavigation()
+	const navigation = useNavigation<NavigationProp>()
 	return (
-		<View>
 			<FooterContainer>
 				<Pressable onPress={() => navigation.navigate("Diary")}>
 					<FooterBlock>
@@ -38,7 +39,6 @@ export default function FooterView() {
 					</FooterBlock>
 				</Pressable>
 			</FooterContainer>
-		</View>
 	)
 }
 
@@ -54,7 +54,7 @@ const FooterContainer = styled.View`
 
 const FooterBlock = styled.View`
 	align-items: center;
-    justify-content: center;
+	justify-content: center;
 `
 
 const FooterImage = styled.Image`
@@ -65,6 +65,6 @@ const FooterImage = styled.Image`
 
 const FooterText = styled.Text`
 	font-size: 10px;
-    width: 90px;
-    text-align: center;
+	width: 90px;
+	text-align: center;
 `

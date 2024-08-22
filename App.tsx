@@ -19,6 +19,9 @@ import Help from "components/Help"
 import Map from "components/Map"
 import Home from "components/Home"
 import OpenedBlock from "components/OpenedBlock"
+import Block from "components/Block"
+import { SafeAreaProvider } from "react-native-safe-area-context"
+import { FlatList, ScrollView } from "react-native-gesture-handler"
 
 const Stack = createStackNavigator()
 interface ScreenWithHeaderAndFooterProps {
@@ -28,61 +31,70 @@ function ScreenWithHeaderAndFooter({
 	children,
 }: ScreenWithHeaderAndFooterProps) {
 	return (
-		<>
+        <>
+        <View style={{backgroundColor: "#fff", height: "100%"}}>
 			<HeaderView />
 			{children}
-			<FooterView />
-		</>
+            <FooterView />
+        </View>
+        </>
 	)
 }
 
 export default function App() {
 	return (
-		<NavigationContainer>
-			<View style={{ height: 30 }}>
-				<StatusBar backgroundColor="white" />
-			</View>
-			<Stack.Navigator
-				initialRouteName="Home"
-				screenOptions={{ headerShown: false }}
-			>
-				<Stack.Screen name="Home">
-					{() => (
-						<ScreenWithHeaderAndFooter>
-							<Home />
-						</ScreenWithHeaderAndFooter>
-					)}
-				</Stack.Screen>
-				<Stack.Screen name="Diary">
-					{() => (
-						<ScreenWithHeaderAndFooter>
-							<Diary />
-						</ScreenWithHeaderAndFooter>
-					)}
-				</Stack.Screen>
-				<Stack.Screen name="Maps">
-					{() => (
-						<ScreenWithHeaderAndFooter>
-							<Map />
-						</ScreenWithHeaderAndFooter>
-					)}
-				</Stack.Screen>
-				<Stack.Screen name="Compass">
-					{() => (
-						<ScreenWithHeaderAndFooter>
-							<Compass />
-						</ScreenWithHeaderAndFooter>
-					)}
-				</Stack.Screen>
-				<Stack.Screen name="Help">
-					{() => (
-						<ScreenWithHeaderAndFooter>
-							<Help />
-						</ScreenWithHeaderAndFooter>
-					)}
-				</Stack.Screen>
-			</Stack.Navigator>
-            <OpenedBlock></OpenedBlock>
-		</NavigationContainer>
+        <SafeAreaProvider>
+            <NavigationContainer>
+                <View style={{ height: 30 }}>
+                    <StatusBar backgroundColor="white" />
+                </View>
+                <Stack.Navigator
+                    initialRouteName="Home"
+                    screenOptions={{ headerShown: false }}
+                >
+                    <Stack.Screen name="Home">
+                        {() => (
+                            <ScreenWithHeaderAndFooter>
+                                <ScrollView>
+                                    <Block></Block>
+                                    <Block></Block>
+                                    <Block></Block>
+                                    <Block></Block>
+                                    <Block></Block>
+                                </ScrollView>
+                            </ScreenWithHeaderAndFooter>
+                        )}
+                    </Stack.Screen>
+                    <Stack.Screen name="Diary">
+                        {() => (
+                            <ScreenWithHeaderAndFooter>
+                                <Diary />
+                            </ScreenWithHeaderAndFooter>
+                        )}
+                    </Stack.Screen>
+                    <Stack.Screen name="Maps">
+                        {() => (
+                            <ScreenWithHeaderAndFooter>
+                                <Map />
+                            </ScreenWithHeaderAndFooter>
+                        )}
+                    </Stack.Screen>
+                    <Stack.Screen name="Compass">
+                        {() => (
+                            <ScreenWithHeaderAndFooter>
+                                <Compass />
+                            </ScreenWithHeaderAndFooter>
+                        )}
+                    </Stack.Screen>
+                    <Stack.Screen name="Help">
+                        {() => (
+                            <ScreenWithHeaderAndFooter>
+                                <Help />
+                            </ScreenWithHeaderAndFooter>
+                        )}
+                    </Stack.Screen>
+                </Stack.Navigator>
+            </NavigationContainer>
+        </SafeAreaProvider>
 	)
 }
