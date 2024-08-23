@@ -1,19 +1,24 @@
 import { StyleSheet, Text, View, Image } from "react-native"
 
-export default function Block() {
+interface IBlockProps {
+    title: string
+    text: string
+    imageSource: any
+}
+
+export default function Block({title, text, imageSource}: IBlockProps) {
 	return (
         <View style={styles.container}>
             <View style={styles.block}>
                 <Image
                     style={styles.blockImage}
-                    source={require("../assets/images/pig.jpg")}
+                    source={imageSource}
                 ></Image>
                 <View style={styles.blockContent}>
                     <View style={styles.blockTextContent}>
-                        <Text style={styles.blockTitle}>Защита от кабана</Text>
+                        <Text style={styles.blockTitle}>{title}</Text>
                         <Text style={styles.blockText}>
-                            Краткое пособие по правилам обращения и самообороны при встрече с
-                            дикими кабанами
+                            {text}
                         </Text>
                     </View>
 
@@ -62,7 +67,7 @@ const styles = StyleSheet.create({
 	},
 	blockTextContent: {
 		width: "calc(100% - 36px)",
-        marginRight: "10%",
+        marginRight: "5%",
 	},
     container: {
         flex: 1,
