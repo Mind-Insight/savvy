@@ -17,11 +17,14 @@ import Diary from "components/Diary"
 import Help from "components/Help"
 import Map from "components/Map"
 import Home from "components/Home"
+import OpenedBlock from "components/OpenedBlock"
 
 const Stack = createStackNavigator()
+
 interface ScreenWithHeaderAndFooterProps {
 	children: ReactNode
 }
+
 function ScreenWithHeaderAndFooter({
 	children,
 }: ScreenWithHeaderAndFooterProps) {
@@ -47,7 +50,7 @@ export default function App() {
 				<Stack.Screen name="Home">
 					{() => (
 						<ScreenWithHeaderAndFooter>
-							<Home />
+							<OpenedBlock />
 						</ScreenWithHeaderAndFooter>
 					)}
 				</Stack.Screen>
