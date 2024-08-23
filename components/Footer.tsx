@@ -1,44 +1,44 @@
 import React from "react"
-import { View, TouchableOpacity, Dimensions } from "react-native"
+import { View, Pressable } from "react-native"
 import styled from "styled-components/native"
 import { useNavigation } from "@react-navigation/native"
+import { TypeRootStackParamList } from "./types/types"
+import { NativeStackNavigationProp } from "react-native-screens/lib/typescript/native-stack/types"
 
-const { height } = Dimensions.get("window")
+type NavigationProp = NativeStackNavigationProp<TypeRootStackParamList>
 
 export default function FooterView() {
-	const navigation = useNavigation()
+	const navigation = useNavigation<NavigationProp>()
 	return (
-		<View>
 			<FooterContainer>
-				<TouchableOpacity onPress={() => navigation.navigate("Diary")}>
+				<Pressable onPress={() => navigation.navigate("Diary")}>
 					<FooterBlock>
 						<FooterImage source={require("../assets/Notebook.png")} />
 						<FooterText>Дневник</FooterText>
 					</FooterBlock>
-				</TouchableOpacity>
+				</Pressable>
 
-				<TouchableOpacity onPress={() => navigation.navigate("Maps")}>
+				<Pressable onPress={() => navigation.navigate("Maps")}>
 					<FooterBlock>
 						<FooterImage source={require("../assets/Map.png")} />
 						<FooterText>Карты</FooterText>
 					</FooterBlock>
-				</TouchableOpacity>
+				</Pressable>
 
-				<TouchableOpacity onPress={() => navigation.navigate("Compass")}>
+				<Pressable onPress={() => navigation.navigate("Compass")}>
 					<FooterBlock>
 						<FooterImage source={require("../assets/Compass.png")} />
 						<FooterText>Компас</FooterText>
 					</FooterBlock>
-				</TouchableOpacity>
+				</Pressable>
 
-				<TouchableOpacity onPress={() => navigation.navigate("Help")}>
+				<Pressable onPress={() => navigation.navigate("Help")}>
 					<FooterBlock>
 						<FooterImage source={require("../assets/Info.png")} />
 						<FooterText>Помощь</FooterText>
 					</FooterBlock>
-				</TouchableOpacity>
+				</Pressable>
 			</FooterContainer>
-		</View>
 	)
 }
 
@@ -54,6 +54,7 @@ const FooterContainer = styled.View`
 
 const FooterBlock = styled.View`
 	align-items: center;
+	justify-content: center;
 `
 
 const FooterImage = styled.Image`
@@ -64,4 +65,6 @@ const FooterImage = styled.Image`
 
 const FooterText = styled.Text`
 	font-size: 10px;
+	width: 90px;
+	text-align: center;
 `

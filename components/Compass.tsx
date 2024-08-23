@@ -35,13 +35,6 @@ export default function Compass() {
 			})
 		)
 	}
-	// const _subscribe = () => {
-	// 	const newSubscription = Magnetometer.addListener(data => {
-	// 		setMagnetometer(_angle(data))
-	// 	})
-
-	// 	setSubscription(newSubscription)
-	// }
 
 	const _unsubscribe = () => {
 		subscription && subscription.remove()

@@ -1,22 +1,23 @@
 import { StyleSheet, Text, View, Image, ImageBackground } from "react-native"
+import { data } from "./data"
 
-export default function OpenedBlock() {
-	return (
-		<View style={styles.block}>
+
+export default function OpenedBlock(name: string) {
+  
+  const filteredData = data.filter(item => item.title == name.name)[0]
+  console.log(filteredData)
+  return (
+    <View style={styles.block}>
 			<ImageBackground
             	style={styles.blockImage} 
-            	source={require("../assets/images/pig.jpg")}
+            	source={filteredData.imageSource}
             >
-				<Text style={styles.imageTitle}>Поиск воды</Text>
-				<Text style={styles.imageSubTitle}>Краткое пособие по поиску и дезинфекции воды в дикой среде</Text>
+				<Text style={styles.imageTitle}>{filteredData.title}</Text>
+				<Text style={styles.imageSubTitle}>{filteredData.text}</Text>
             </ImageBackground>
-			<Text style={styles.content}>1. Найдите источник воды, такой как ручей, река или озеро. <br /> <br />
-				2. Очистите воду, используя фильтр или кипячение. <br /> <br />
-				3. Выпейте только очищенную воду, чтобы избежать инфекций. <br /> <br />
-				4. Если источник воды не найден, можно сконструировать солнечный стиллер или встроенный фильтр из природных материалов. <br /> <br />
-				5. Не пейте воду из стоячих болот или водоемов, чтобы предотвратить заражение.</Text>
+			<Text style={styles.content}>{filteredData.content}</Text>
 		</View>
-	)
+  )
 }
 
 const styles = StyleSheet.create({
