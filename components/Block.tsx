@@ -61,7 +61,6 @@ const styles = StyleSheet.create({
 	blockContent: {
         width: "95%",
 		flexDirection: "row",
-		// padding: 16,
         paddingTop: 16,
         paddingLeft: 16,
         paddingBottom: 16,

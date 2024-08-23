@@ -4,26 +4,27 @@ import { useNavigation } from "@react-navigation/native"
 import styled from "styled-components/native"
 import { TypeRootStackParamList } from "./types/types"
 import { NativeStackNavigationProp } from "react-native-screens/lib/typescript/native-stack/types"
+import { SvgUri } from "react-native-svg"
+import Logo from "../assets/hlogo.svg"
+import Search from "../assets/lupa.svg"
 
 const logoWidth = 164
 const searchWidth = 24
 
-type NavigationProp = NativeStackNavigationProp<TypeRootStackParamList>;
+type NavigationProp = NativeStackNavigationProp<TypeRootStackParamList>
 
 export default function HeaderView() {
 	const navigation = useNavigation<NavigationProp>()
 	return (
-
-			<HeaderBlock>
-				<HeaderImage source={require("../assets/search.png")}></HeaderImage>
-				<LogoContainer>
-					<Pressable onPress={() => navigation.navigate("Home")}>
-						<HeaderLogo source={require("../assets/logo.png")} />
-					</Pressable>
-				</LogoContainer>
-				<View style={{ width: searchWidth }} />
-			</HeaderBlock>
-
+		<HeaderBlock>
+			<Search width={searchWidth} height={searchWidth} style={{ marginLeft: 10 }} />
+			<LogoContainer>
+				<Pressable onPress={() => navigation.navigate("Home")}>
+					<Logo width={logoWidth} height={searchWidth} style={{marginRight: 10}}/>
+				</Pressable>
+			</LogoContainer>
+			<View style={{ width: searchWidth }} />
+		</HeaderBlock>
 	)
 }
 
@@ -38,15 +39,4 @@ const HeaderBlock = styled.View`
 	justify-content: space-between;
 	padding: 10px;
 	background-color: #ffffff;
-`
-
-const HeaderImage = styled.Image`
-	width: ${searchWidth}px;
-	height: ${searchWidth}px;
-	margin-left: 10px;
-`
-
-const HeaderLogo = styled.Image`
-	width: ${logoWidth}px;
-	height: 24px;
 `

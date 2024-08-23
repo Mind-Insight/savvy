@@ -3,7 +3,7 @@ export const data = [
 		id: 1,
 		title: "Поиск воды",
 		text: "Краткое пособие по поиску и дезинфекции воды в дикой среде",
-		imageSource: require("../assets/water_search.png"),
+		imageSource: require("../assets/water.svg"),
 		category: "Руководство по выживанию",
 		content: `1. Найдите источник воды, такой как ручей, река или озеро. 
 
