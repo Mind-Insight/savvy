@@ -1,23 +1,21 @@
 import { StyleSheet, Text, View, Image, ImageBackground } from "react-native"
 import { data } from "./data"
 
-
 export default function OpenedBlock(name: string) {
-  
-  const filteredData = data.filter(item => item.title == name.name)[0]
-  console.log(filteredData)
-  return (
-    <View style={styles.block}>
+	const filteredData = data.filter(item => item.title == name)[0]
+
+	return (
+		<View style={styles.block}>
 			<ImageBackground
-            	style={styles.blockImage} 
-            	source={filteredData.imageSource}
-            >
+				style={styles.blockImage}
+				source={filteredData.imageSource}
+			>
 				<Text style={styles.imageTitle}>{filteredData.title}</Text>
 				<Text style={styles.imageSubTitle}>{filteredData.text}</Text>
-            </ImageBackground>
+			</ImageBackground>
 			<Text style={styles.content}>{filteredData.content}</Text>
 		</View>
-  )
+	)
 }
 
 const styles = StyleSheet.create({
@@ -32,32 +30,32 @@ const styles = StyleSheet.create({
 			height: 7,
 		},
 	},
-    blockImage: {
+	blockImage: {
 		width: "100%",
 		height: 194,
-        position: 'relative',
+		position: "relative",
 	},
-    imageTitle: {
-        fontFamily: 'sans-serif',
-        position: 'absolute',
-        bottom: 44,
-        left: 16,
+	imageTitle: {
+		fontFamily: "sans-serif",
+		position: "absolute",
+		bottom: 44,
+		left: 16,
 		fontSize: 30,
-		color: 'white',
+		color: "white",
 		fontWeight: 600,
-    },
+	},
 	imageSubTitle: {
 		width: 300,
-		fontFamily: 'sans-serif',
+		fontFamily: "sans-serif",
 		fontWeight: 300,
-		color: 'white',
-		position: 'absolute',
+		color: "white",
+		position: "absolute",
 		bottom: 16,
-        left: 17,
+		left: 17,
 	},
 	content: {
 		padding: 16,
 		paddingTop: 24,
-		color: '#323232'
-	}
+		color: "#323232",
+	},
 })

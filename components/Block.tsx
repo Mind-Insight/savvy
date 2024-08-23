@@ -61,13 +61,15 @@ const styles = StyleSheet.create({
 	blockContent: {
         width: "95%",
 		flexDirection: "row",
-		padding: 16,
-		// gap: 35,
+		// padding: 16,
+        paddingTop: 16,
+        paddingLeft: 16,
+        paddingBottom: 16,
 		alignItems: "center",
+        justifyContent: "space-between",
 	},
 	blockTextContent: {
-		width: "calc(100% - 36px)",
-        marginRight: "5%",
+		width: "90%",
 	},
     container: {
         flex: 1,
