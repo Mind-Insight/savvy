@@ -42,7 +42,7 @@ const Categories: FC<ICategoriesProps> = ({ onSelectCategory }) => {
 const Container = styled(ScrollView)`
 	flex-direction: row;
 	padding: 10px;
-	margin-bottom: 25px;
+	margin-bottom: 15px;
 	margin-top: 10px;
 `
 

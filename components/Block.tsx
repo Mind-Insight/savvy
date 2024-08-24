@@ -1,4 +1,6 @@
 import { StyleSheet, Text, View, Image, Pressable } from "react-native"
+import React from "react"
+import Arrow from "../assets/arrow.svg"
 
 interface IBlockProps {
     title: string
@@ -10,10 +12,7 @@ export default function Block({title, text, imageSource}: IBlockProps) {
 	return (
         <View style={styles.container}>
             <View style={styles.block}>
-                <Image
-                    style={styles.blockImage}
-                    source={imageSource}
-                ></Image>
+                {React.cloneElement(imageSource, { width: "100%", height: 176 })}
                 <View style={styles.blockContent}>
                     <View style={styles.blockTextContent}>
                         <Text style={styles.blockTitle}>{title}</Text>
@@ -22,7 +21,7 @@ export default function Block({title, text, imageSource}: IBlockProps) {
                         </Text>
                     </View>
 
-                    <Image source={require("../assets/images/blockArrow.png")}></Image>
+                    <Arrow width="36" height="36" />
                 </View>
             </View>
         </View>
@@ -37,10 +36,6 @@ const styles = StyleSheet.create({
         backgroundColor: "#fff",
 		elevation: 1,
         marginBottom: 12,
-	},
-	blockImage: {
-		width: "100%",
-		height: 166,
 	},
 	blockTitle: {
         // --------- ПОДКЛЮЧИТЬ ШРИФТ SF Pro ---------

@@ -5,6 +5,11 @@ import { useNavigation } from "@react-navigation/native"
 import { TypeRootStackParamList } from "./types/types"
 import { NativeStackNavigationProp } from "react-native-screens/lib/typescript/native-stack/types"
 
+import Notebook from "../assets/Notebook.svg"
+import Map from "../assets/Map.svg"
+import Compass from "../assets/Compass.svg"
+import Info from "../assets/Info.svg"
+
 type NavigationProp = NativeStackNavigationProp<TypeRootStackParamList>
 
 export default function FooterView() {
@@ -13,28 +18,28 @@ export default function FooterView() {
 			<FooterContainer>
 				<Pressable onPress={() => navigation.navigate("Diary")}>
 					<FooterBlock>
-						<FooterImage source={require("../assets/Notebook.png")} />
+						<Notebook width="24" height="24"/>
 						<FooterText>Дневник</FooterText>
 					</FooterBlock>
 				</Pressable>
 
 				<Pressable onPress={() => navigation.navigate("Maps")}>
 					<FooterBlock>
-						<FooterImage source={require("../assets/Map.png")} />
+						<Map width="24" height="24"/>
 						<FooterText>Карты</FooterText>
 					</FooterBlock>
 				</Pressable>
 
 				<Pressable onPress={() => navigation.navigate("Compass")}>
 					<FooterBlock>
-						<FooterImage source={require("../assets/Compass.png")} />
+						<Compass width="24" height="24"/>
 						<FooterText>Компас</FooterText>
 					</FooterBlock>
 				</Pressable>
 
 				<Pressable onPress={() => navigation.navigate("Help")}>
 					<FooterBlock>
-						<FooterImage source={require("../assets/Info.png")} />
+						<Info width="24" height="24"/>
 						<FooterText>Помощь</FooterText>
 					</FooterBlock>
 				</Pressable>

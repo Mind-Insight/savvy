@@ -1,11 +1,21 @@
+import Water from "../assets/water.svg"
+import Fire from "../assets/fire.svg"
+import Shelter from "../assets/shelter.svg"
+import Fishing from "../assets/fishing.svg"
+import Cooking from "../assets/cooking.svg"
+import Pig from "../assets/pig.svg"
+import Bear from "../assets/bear.svg"
+import Wolf from "../assets/wolf.svg"
+
+
 export const data = [
 	{
 		id: 1,
 		title: "Поиск воды",
 		text: "Краткое пособие по поиску и дезинфекции воды в дикой среде",
-		imageSource: require("../assets/water_search.png"),
+        imageSource: Water,
 		category: "Руководство по выживанию",
-		content: `1. Найдите источник воды, такой как ручей, река или озеро. 
+		content: `1. Найдите источник воды, такой как ручей, река или озеро.
 
 2. Очистите воду, используя фильтр или кипячение.
 
@@ -19,9 +29,9 @@ export const data = [
 		id: 2,
 		title: "Разведение огня",
 		text: "Краткое пособие по разведению и поддержке огня",
-		imageSource: require("../assets/fire.png"),
+		imageSource: Fire,
 		category: "Руководство по выживанию",
-		content: `1. Найдите источник воды, такой как ручей, река или озеро. 
+		content: `1. Найдите источник воды, такой как ручей, река или озеро.
 
 2. Очистите воду, используя фильтр или кипячение.
 
@@ -35,9 +45,9 @@ export const data = [
 		id: 3,
 		title: "Построение укрытия",
 		text: "Краткое пособие по построение укрытия",
-		imageSource: require("../assets/shelter.png"),
+		imageSource: Shelter,
 		category: "Руководство по выживанию",
-		content: `1. Найдите источник воды, такой как ручей, река или озеро. 
+		content: `1. Найдите источник воды, такой как ручей, река или озеро.
 
 2. Очистите воду, используя фильтр или кипячение.
 
@@ -51,9 +61,9 @@ export const data = [
 		id: 4,
 		title: "Добыча питания",
 		text: "Краткое пособие по построение укрытия",
-		imageSource: require("../assets/fishing.png"),
+		imageSource: Fishing,
 		category: "Руководство по выживанию",
-		content: `1. Найдите источник воды, такой как ручей, река или озеро. 
+		content: `1. Найдите источник воды, такой как ручей, река или озеро.
 
 2. Очистите воду, используя фильтр или кипячение.
 
@@ -67,9 +77,9 @@ export const data = [
 		id: 5,
 		title: "Способ готовки",
 		text: "Краткое пособие по построение укрытия",
-		imageSource: require("../assets/chief.jpg"),
+		imageSource: Cooking,
 		category: "Руководство по выживанию",
-		content: `1. Найдите источник воды, такой как ручей, река или озеро. 
+		content: `1. Найдите источник воды, такой как ручей, река или озеро.
 
 2. Очистите воду, используя фильтр или кипячение.
 
@@ -83,9 +93,9 @@ export const data = [
 		id: 6,
 		title: "Защита от медведя",
 		text: "Краткое пособие по правилам обращения и самообороны при встрече с диким медведем",
-		imageSource: require("../assets/bear.png"),
+		imageSource: Bear,
 		category: "Животные",
-		content: `1. Найдите источник воды, такой как ручей, река или озеро. 
+		content: `1. Найдите источник воды, такой как ручей, река или озеро.
 
 2. Очистите воду, используя фильтр или кипячение.
 
@@ -99,9 +109,9 @@ export const data = [
 		id: 7,
 		title: "Защита от кабана",
 		text: "Краткое пособие по правилам обращения и самообороны при встрече с дикими кабанами",
-		imageSource: require("../assets/pig.png"),
+		imageSource: Pig,
 		category: "Животные",
-		content: `1. Найдите источник воды, такой как ручей, река или озеро. 
+		content: `1. Найдите источник воды, такой как ручей, река или озеро.
 
 2. Очистите воду, используя фильтр или кипячение.
 
@@ -115,9 +125,9 @@ export const data = [
 		id: 8,
 		title: "Защита от волков",
 		text: "Краткое пособие по правилам обращения и самообороны при встрече с дикими волками",
-		imageSource: require("../assets/wolf.png"),
+		imageSource: Wolf,
 		category: "Животные",
-		content: `1. Найдите источник воды, такой как ручей, река или озеро. 
+		content: `1. Найдите источник воды, такой как ручей, река или озеро.
 
 2. Очистите воду, используя фильтр или кипячение.
 
