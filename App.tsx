@@ -1,3 +1,4 @@
+import * as SplashScreen from "expo-splash-screen"
 import { StatusBar } from "expo-status-bar"
 import React, { ReactNode } from "react"
 import { SafeAreaView, StyleSheet, Text, View } from "react-native"
@@ -22,6 +23,7 @@ import Categories from "components/Categories"
 import { SafeAreaProvider } from "react-native-safe-area-context"
 import { FlatList, ScrollView } from "react-native-gesture-handler"
 import { data } from "components/data"
+import LoadingScreen from "components/LoadingScreen"
 
 const Stack = createStackNavigator()
 interface ScreenWithHeaderAndFooterProps {
@@ -41,10 +43,17 @@ function ScreenWithHeaderAndFooter({
 	)
 }
 
+
 export default function App() {
-	const [selectedCategory, setSelectedCategory] = useState<string>(
-		"Руководство по выживанию"
-	)
+    const [isShowSplash, setIsShowSplash] = useState(true)
+    const [selectedCategory, setSelectedCategory] = useState("Руководство по выживанию")
+
+    useEffect(() => {
+        setTimeout(() => {
+            setIsShowSplash(false)
+        }, 2000)
+    })
+
 	const handleCategorySelect = (category: string) => {
 		setSelectedCategory(category)
 	}
@@ -52,62 +61,66 @@ export default function App() {
 	const filteredData = data.filter(item => item.category === selectedCategory)
 
 	return (
-		<SafeAreaProvider>
-			<NavigationContainer>
-				<View style={{ height: 45 }}>
-					<StatusBar backgroundColor="white" />
-				</View>
-				<Stack.Navigator
-					initialRouteName="Home"
-					screenOptions={{ headerShown: false }}
-				>
-					<Stack.Screen name="Home">
-						{() => (
-							<ScreenWithHeaderAndFooter>
-								<ScrollView>
-									<Categories onSelectCategory={handleCategorySelect}/>
-									{filteredData.map(item => (
-										<Block
-											key={item.id}
-											title={item.title}
-											text={item.text}
-											imageSource={item.imageSource}
-										></Block>
-									))}
-								</ScrollView>
-							</ScreenWithHeaderAndFooter>
-						)}
-					</Stack.Screen>
-					<Stack.Screen name="Diary">
-						{() => (
-							<ScreenWithHeaderAndFooter>
-								<Diary />
-							</ScreenWithHeaderAndFooter>
-						)}
-					</Stack.Screen>
-					<Stack.Screen name="Maps">
-						{() => (
-							<ScreenWithHeaderAndFooter>
-								<Map />
-							</ScreenWithHeaderAndFooter>
-						)}
-					</Stack.Screen>
-					<Stack.Screen name="Compass">
-						{() => (
-							<ScreenWithHeaderAndFooter>
-								<Compass />
-							</ScreenWithHeaderAndFooter>
-						)}
-					</Stack.Screen>
-					<Stack.Screen name="Help">
-						{() => (
-							<ScreenWithHeaderAndFooter>
-								<Help />
-							</ScreenWithHeaderAndFooter>
-						)}
-					</Stack.Screen>
-				</Stack.Navigator>
-			</NavigationContainer>
-		</SafeAreaProvider>
+        <>
+        {isShowSplash ? <LoadingScreen /> :
+        <SafeAreaProvider>
+        <NavigationContainer>
+            <View style={{ height: 45 }}>
+                <StatusBar backgroundColor="white" />
+            </View>
+            <Stack.Navigator
+                initialRouteName="Home"
+                screenOptions={{ headerShown: false }}
+            >
+                <Stack.Screen name="Home">
+                    {() => (
+                        <ScreenWithHeaderAndFooter>
+                            <ScrollView>
+                                <Categories onSelectCategory={handleCategorySelect} />
+                                {filteredData.map(item => (
+                                    <Block
+                                        key={item.id}
+                                        title={item.title}
+                                        text={item.text}
+                                        imageSource={item.imageSource}
+                                    ></Block>
+                                ))}
+                            </ScrollView>
+                        </ScreenWithHeaderAndFooter>
+                    )}
+                </Stack.Screen>
+                <Stack.Screen name="Diary">
+                    {() => (
+                        <ScreenWithHeaderAndFooter>
+                            <Diary />
+                        </ScreenWithHeaderAndFooter>
+                    )}
+                </Stack.Screen>
+                <Stack.Screen name="Maps">
+                    {() => (
+                        <ScreenWithHeaderAndFooter>
+                            <Map />
+                        </ScreenWithHeaderAndFooter>
+                    )}
+                </Stack.Screen>
+                <Stack.Screen name="Compass">
+                    {() => (
+                        <ScreenWithHeaderAndFooter>
+                            <Compass />
+                        </ScreenWithHeaderAndFooter>
+                    )}
+                </Stack.Screen>
+                <Stack.Screen name="Help">
+                    {() => (
+                        <ScreenWithHeaderAndFooter>
+                            <Help />
+                        </ScreenWithHeaderAndFooter>
+                    )}
+                </Stack.Screen>
+            </Stack.Navigator>
+        </NavigationContainer>
+    </SafeAreaProvider>
+        }
+        </>
 	)
 }

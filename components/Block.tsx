@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Image } from "react-native"
+import { StyleSheet, Text, View, Image, Pressable } from "react-native"
 
 interface IBlockProps {
     title: string
