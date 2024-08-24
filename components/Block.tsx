@@ -22,7 +22,7 @@ export default function Block({title, text, imageSource}: IBlockProps) {
 	return (
         <View style={styles.container}>
             <View style={styles.block}>
-                {React.cloneElement(imageSource, { width: "100%", height: 176 })}
+                {React.cloneElement(imageSource, { width: "100%", height: 162, resizeMode: "cover"})}
                 <View style={styles.blockContent}>
                     <View style={styles.blockTextContent}>
                         <Text style={styles.blockTitle}>{title}</Text>
@@ -47,6 +47,8 @@ const styles = StyleSheet.create({
         backgroundColor: "#fff",
 		elevation: 1,
         marginBottom: 12,
+        position: "relative",
+
 	},
 	blockTitle: {
         // --------- ПОДКЛЮЧИТЬ ШРИФТ SF Pro ---------

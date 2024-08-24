@@ -10,7 +10,7 @@ export default function OpenedBlock({route}) {
         <View style={styles.container}>
             <View style={styles.block}>
                 <View style={styles.blockImage}>
-                    {React.cloneElement(imageSource, { width: '100%', height: 176 })}
+                    {React.cloneElement(imageSource, { width: '100%', height: 162 })}
                     <View style={styles.overlayContainer}>
                         <Text style={styles.overlayTitle}>{title}</Text>
                         <Text style={styles.overlayText}>{text}</Text>
