@@ -24,29 +24,13 @@ import { SafeAreaProvider } from "react-native-safe-area-context"
 import { FlatList, ScrollView } from "react-native-gesture-handler"
 import { data } from "components/data"
 import LoadingScreen from "components/LoadingScreen"
+import { AppProvider, useAppContext } from "components/AppContext"
+import ScreenWithHeaderAndFooter from "components/ScreenWithHeaderAndFooter"
 
 const Stack = createStackNavigator()
-interface ScreenWithHeaderAndFooterProps {
-	children: ReactNode
-}
-function ScreenWithHeaderAndFooter({
-	children,
-}: ScreenWithHeaderAndFooterProps) {
-	return (
-		<>
-			<View style={{ backgroundColor: "#fff", height: "100%" }}>
-				<HeaderView />
-				{children}
-				<FooterView />
-			</View>
-		</>
-	)
-}
-
 
 export default function App() {
     const [isShowSplash, setIsShowSplash] = useState(true)
-    const [selectedCategory, setSelectedCategory] = useState("Руководство по выживанию")
 
     useEffect(() => {
         setTimeout(() => {
@@ -54,14 +38,8 @@ export default function App() {
         }, 2000)
     })
 
-	const handleCategorySelect = (category: string) => {
-		setSelectedCategory(category)
-	}
-
-	const filteredData = data.filter(item => item.category === selectedCategory)
-
 	return (
-        <>
+        <AppProvider>
         {isShowSplash ? <LoadingScreen /> :
         <SafeAreaProvider>
         <NavigationContainer>
@@ -72,29 +50,9 @@ export default function App() {
                 initialRouteName="Home"
                 screenOptions={{ headerShown: false }}
             >
-                <Stack.Screen name="Home">
-                    {() => (
-                        <ScreenWithHeaderAndFooter>
-                            <ScrollView>
-                                <Categories onSelectCategory={handleCategorySelect} />
-                                {filteredData.map(item => (
-                                    <Block
-                                        key={item.id}
-                                        title={item.title}
-                                        text={item.text}
-                                        imageSource={<item.imageSource />}
-                                    ></Block>
-                                ))}
-                            </ScrollView>
-                        </ScreenWithHeaderAndFooter>
-                    )}
+                <Stack.Screen name="Home" component={Diary}>
                 </Stack.Screen>
-                <Stack.Screen name="Diary">
-                    {() => (
-                        <ScreenWithHeaderAndFooter>
-                            <Diary />
-                        </ScreenWithHeaderAndFooter>
-                    )}
+                <Stack.Screen name="Diary" component={Diary}>
                 </Stack.Screen>
                 <Stack.Screen name="Maps">
                     {() => (
@@ -117,10 +75,17 @@ export default function App() {
                         </ScreenWithHeaderAndFooter>
                     )}
                 </Stack.Screen>
+                <Stack.Screen name="OpenedBlock">
+                    {({navigation, route}) => (
+                        <ScreenWithHeaderAndFooter>
+                            <OpenedBlock route={route}/>
+                        </ScreenWithHeaderAndFooter>
+                    )}
+                </Stack.Screen>
             </Stack.Navigator>
         </NavigationContainer>
     </SafeAreaProvider>
         }
-        </>
+        </AppProvider>
 	)
 }

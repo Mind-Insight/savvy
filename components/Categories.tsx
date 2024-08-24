@@ -1,5 +1,5 @@
 import { FC, useState } from "react"
-import { View, Text, ScrollView, TouchableOpacity } from "react-native"
+import { View, Text, ScrollView, TouchableOpacity, Pressable } from "react-native"
 
 import styled from "styled-components/native"
 
@@ -7,35 +7,27 @@ interface ICategoriesProps {
 	onSelectCategory: (category: string) => void
 }
 
-const Categories: FC<ICategoriesProps> = ({ onSelectCategory }) => {
-	const [activeIndex, setActiveIndex] = useState<number>(0)
+const Categories: FC<ICategoriesProps> = ({ onSelectCategory, selectedCategory }) => {
+// 	const [activeIndex, setActiveIndex] = useState<number>(0)
 	const categories = ["Руководство по выживанию", "Животные", "Растения"]
+	const activeIndex = categories.indexOf(selectedCategory)
 
 	const handleCategoryPress = (index: number) => {
-		setActiveIndex(index)
-		onSelectCategory(categories[index])
-	}
+            onSelectCategory(categories[index]);
+    };
 
 	return (
 		<Container horizontal showsHorizontalScrollIndicator={false}>
-			<TouchableOpacity onPress={() => handleCategoryPress(0)}>
-				<CategoryBlock active={activeIndex === 0}>
-					<CategoryText style={{ width: 250 }}>
-						{categories[0]}
-					</CategoryText>
-				</CategoryBlock>
-			</TouchableOpacity>
-			<TouchableOpacity onPress={() => handleCategoryPress(1)}>
-				<CategoryBlock active={activeIndex === 1}>
-					<CategoryText style={{ width: 100 }}>{categories[1]}</CategoryText>
-				</CategoryBlock>
-			</TouchableOpacity>
-			<TouchableOpacity onPress={() => handleCategoryPress(2)}>
-				<CategoryBlock active={activeIndex === 2}>
-					<CategoryText style={{ width: 100 }}>{categories[2]}</CategoryText>
-				</CategoryBlock>
-			</TouchableOpacity>
-		</Container>
+            {categories.map((category, index) => (
+                <Pressable key={index} onPress={() => handleCategoryPress(index)}>
+                    <CategoryBlock active={activeIndex === index}>
+                        <CategoryText style={{ width: index === 0 ? 220 : 100 }}>
+                            {category}
+                        </CategoryText>
+                    </CategoryBlock>
+                </Pressable>
+            ))}
+        </Container>
 	)
 }
 

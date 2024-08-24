@@ -60,6 +60,7 @@ const FooterContainer = styled.View`
 const FooterBlock = styled.View`
 	align-items: center;
 	justify-content: center;
+	height: 50px;
 `
 
 const FooterImage = styled.Image`

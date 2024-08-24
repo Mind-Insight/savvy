@@ -1,4 +1,5 @@
 import { StyleSheet, Text, View, Image, Pressable } from "react-native"
+import { useNavigation } from '@react-navigation/native'
 import React from "react"
 import Arrow from "../assets/arrow.svg"
 
@@ -9,6 +10,15 @@ interface IBlockProps {
 }
 
 export default function Block({title, text, imageSource}: IBlockProps) {
+    const navigation = useNavigation()
+    const handleBlockPress = () => {
+        navigation.navigate("OpenedBlock", {
+            imageSource: imageSource,
+            title: title,
+            text: text
+        })
+    }
+
 	return (
         <View style={styles.container}>
             <View style={styles.block}>
@@ -20,8 +30,9 @@ export default function Block({title, text, imageSource}: IBlockProps) {
                             {text}
                         </Text>
                     </View>
-
-                    <Arrow width="36" height="36" />
+                    <Pressable onPress={handleBlockPress}>
+                        <Arrow width="36" height="36" />
+                    </Pressable>
                 </View>
             </View>
         </View>
