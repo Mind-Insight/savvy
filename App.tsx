@@ -15,8 +15,7 @@ import FooterView from "components/Footer"
 import Compass from "./components/Compass"
 import Diary from "components/Diary"
 import Help from "components/Help"
-import Map from "components/Map"
-import Home from "components/Home"
+import Main from "components/Main"
 import OpenedBlock from "components/OpenedBlock"
 import Block from "components/Block"
 import Categories from "components/Categories"
@@ -47,17 +46,15 @@ export default function App() {
                 <StatusBar backgroundColor="white" />
             </View>
             <Stack.Navigator
-                initialRouteName="Home"
+                initialRouteName="Diary"
                 screenOptions={{ headerShown: false }}
             >
-                <Stack.Screen name="Home" component={Diary}>
-                </Stack.Screen>
                 <Stack.Screen name="Diary" component={Diary}>
                 </Stack.Screen>
-                <Stack.Screen name="Maps">
+                <Stack.Screen name="Main">
                     {() => (
                         <ScreenWithHeaderAndFooter>
-                            <Map />
+                            <Main />
                         </ScreenWithHeaderAndFooter>
                     )}
                 </Stack.Screen>

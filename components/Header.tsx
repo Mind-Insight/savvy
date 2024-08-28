@@ -37,7 +37,7 @@ export default function HeaderView() {
 			    {renderSearchIcon()}
 			</Pressable>
 			<LogoContainer>
-				<Pressable onPress={() => navigation.navigate("Home")}>
+				<Pressable onPress={() => navigation.navigate("Diary")}>
 					<Logo width={logoWidth} height={searchWidth} style={{marginRight: 10}}/>
 				</Pressable>
 			</LogoContainer>

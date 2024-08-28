@@ -8,7 +8,6 @@ interface ICategoriesProps {
 }
 
 const Categories: FC<ICategoriesProps> = ({ onSelectCategory, selectedCategory }) => {
-// 	const [activeIndex, setActiveIndex] = useState<number>(0)
 	const categories = ["Руководство по выживанию", "Животные", "Растения"]
 	const activeIndex = categories.indexOf(selectedCategory)
 
