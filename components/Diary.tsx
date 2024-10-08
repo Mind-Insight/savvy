@@ -5,30 +5,22 @@ import Categories from './Categories'
 import Block from './Block'
 import ScreenWithHeaderAndFooter from "components/ScreenWithHeaderAndFooter"
 import {data} from "./data"
+import PhotoAlbum from "../assets/photoalbum.svg"
 
 const Diary = () => {
-    const { selectedCategory, setSelectedCategory } = useAppContext()
-    const filteredData = data.filter(item => item.category === selectedCategory)
-
-    const handleCategorySelect = (category: string) => {
-        setSelectedCategory(category)
-    };
 
     return (
         <ScreenWithHeaderAndFooter>
             <ScrollView>
-                <Categories
-                    onSelectCategory={handleCategorySelect}
-                    selectedCategory={selectedCategory}
+                <Block
+                    title="Фотоальбом"
+                    text="Вспомните, как это было!"
+                    imageSource={<PhotoAlbum />}
                 />
-                {filteredData.map(item => (
-                    <Block
-                        key={item.id}
-                        title={item.title}
-                        text={item.text}
-                        imageSource={<item.imageSource />}
-                    />
-                ))}
+                <Block
+                    title="Фотоальбом"
+                    text="Вспомните, как это было!"
+                />
             </ScrollView>
         </ScreenWithHeaderAndFooter>
     );

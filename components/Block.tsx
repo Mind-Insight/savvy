@@ -4,9 +4,9 @@ import React from "react"
 import Arrow from "../assets/arrow.svg"
 
 interface IBlockProps {
-    title: string
-    text: string
-    imageSource: any
+    title: string;
+    text: string;
+    imageSource?: React.ReactElement;
 }
 
 export default function Block({title, text, imageSource}: IBlockProps) {
@@ -22,7 +22,7 @@ export default function Block({title, text, imageSource}: IBlockProps) {
 	return (
         <View style={styles.container}>
             <View style={styles.block}>
-                {React.cloneElement(imageSource, { width: "100%", height: 162, resizeMode: "cover"})}
+                {imageSource && React.cloneElement(imageSource, { width: "100%", height: 162, resizeMode: "cover"})}
                 <View style={styles.blockContent}>
                     <View style={styles.blockTextContent}>
                         <Text style={styles.blockTitle}>{title}</Text>
@@ -48,7 +48,6 @@ const styles = StyleSheet.create({
 		elevation: 1,
         marginBottom: 12,
         position: "relative",
-
 	},
 	blockTitle: {
         // --------- ПОДКЛЮЧИТЬ ШРИФТ SF Pro ---------
@@ -81,5 +80,6 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         marginLeft: "5%",
+        marginTop: 25
     }
 })

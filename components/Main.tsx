@@ -1,13 +1,38 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { ScrollView, View } from 'react-native'
+import { useAppContext } from './AppContext'
+import Categories from './Categories'
+import Block from './Block'
+import ScreenWithHeaderAndFooter from "components/ScreenWithHeaderAndFooter"
+import {data} from "./data"
 
 
-export default function Main() {
+const Main = () => {
+    const { selectedCategory, setSelectedCategory } = useAppContext()
+    const filteredData = data.filter(item => item.category === selectedCategory)
+
+    const handleCategorySelect = (category: string) => {
+        setSelectedCategory(category)
+    };
+
     return (
-        <View style={{ flex: 1 }}>
-          <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-            <Text>Это главный экран</Text>
-          </View>
-        </View>
-      );
+        <ScreenWithHeaderAndFooter>
+            <ScrollView>
+                <Categories
+                    onSelectCategory={handleCategorySelect}
+                    selectedCategory={selectedCategory}
+                />
+                {filteredData.map(item => (
+                    <Block
+                        key={item.id}
+                        title={item.title}
+                        text={item.text}
+                        imageSource={<item.imageSource />}
+                    />
+                ))}
+            </ScrollView>
+        </ScreenWithHeaderAndFooter>
+    );
 };
+
+export default Main;

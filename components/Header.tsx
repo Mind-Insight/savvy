@@ -19,7 +19,7 @@ export default function HeaderView() {
 	const route = useRoute()
 
     const renderSearchIcon = () => {
-        if (route.name == "OpenedBlock") {
+        if (["OpenedBlock", "Diary"].includes(route.name)) {
             return <ArrowBack width={24} height={24} style={{marginLeft: 10}} />
         }
         else {
@@ -28,7 +28,7 @@ export default function HeaderView() {
     }
 
     const handleSearchIconPress = () => {
-        navigation.navigate("Diary")
+        navigation.navigate("Main")
     }
 
 	return (

@@ -46,17 +46,12 @@ export default function App() {
                 <StatusBar backgroundColor="white" />
             </View>
             <Stack.Navigator
-                initialRouteName="Diary"
+                initialRouteName="Main"
                 screenOptions={{ headerShown: false }}
             >
                 <Stack.Screen name="Diary" component={Diary}>
                 </Stack.Screen>
-                <Stack.Screen name="Main">
-                    {() => (
-                        <ScreenWithHeaderAndFooter>
-                            <Main />
-                        </ScreenWithHeaderAndFooter>
-                    )}
+                <Stack.Screen name="Main" component={Main}>
                 </Stack.Screen>
                 <Stack.Screen name="Compass">
                     {() => (
