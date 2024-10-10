@@ -13,7 +13,7 @@ import styled from "styled-components/native"
 import HeaderView from "components/Header"
 import FooterView from "components/Footer"
 import Compass from "./components/Compass"
-import Diary from "components/Diary"
+import Maps from "components/Maps"
 import Help from "components/Help"
 import Main from "components/Main"
 import OpenedBlock from "components/OpenedBlock"
@@ -49,7 +49,7 @@ export default function App() {
                 initialRouteName="Main"
                 screenOptions={{ headerShown: false }}
             >
-                <Stack.Screen name="Diary" component={Diary}>
+                <Stack.Screen name="Maps" component={Maps}>
                 </Stack.Screen>
                 <Stack.Screen name="Main" component={Main}>
                 </Stack.Screen>

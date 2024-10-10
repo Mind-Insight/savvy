@@ -5,7 +5,7 @@ import Categories from './Categories'
 import Block from './Block'
 import ScreenWithHeaderAndFooter from "components/ScreenWithHeaderAndFooter"
 import {data} from "./data"
-import PhotoAlbum from "../assets/photoalbum.svg"
+import Map from "../assets/UnMap.svg"
 
 const Diary = () => {
 
@@ -15,7 +15,7 @@ const Diary = () => {
                 <Block
                     title="Фотоальбом"
                     text="Вспомните, как это было!"
-                    imageSource={<PhotoAlbum />}
+                    imageSource={<Map />}
                 />
                 <Block
                     title="Фотоальбом"

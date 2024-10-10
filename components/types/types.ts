@@ -1,6 +1,6 @@
 export type TypeRootStackParamList = {
     Compass: undefined
-    Diary: undefined
+    Maps: undefined
     Help: undefined
     Main: undefined
 }

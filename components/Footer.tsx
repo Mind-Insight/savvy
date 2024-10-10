@@ -5,25 +5,27 @@ import { useNavigation } from "@react-navigation/native"
 import { TypeRootStackParamList } from "./types/types"
 import { NativeStackNavigationProp } from "react-native-screens/lib/typescript/native-stack/types"
 
-import Notebook from "../assets/note.svg"
-import UnNotebook from "../assets/un_note.svg"
+import Maps from "../assets/Map.svg"
+import UnMaps from "../assets/UnMap.svg"
 import Main from "../assets/main.svg"
 import UnMain from "../assets/un_main.svg"
 import Compass from "../assets/compass.svg"
 import UnCompass from "../assets/un_compass.svg"
 import Info from "../assets/info.svg"
 import UnInfo from "../assets/un_info.svg"
+import Note from "../assets/note.svg"
+import UnNote from "../assets/un_note.svg"
 
 type NavigationProp = NativeStackNavigationProp<TypeRootStackParamList>
 
 export default function FooterView({currentPage}) {
 	const navigation = useNavigation<NavigationProp>()
 
-	const pagesNames = ["Главная", "Дневник", "Компас", "Помощь"]
-	const pages = ["Main", "Diary", "Compass", "Help"]
+	const pagesNames = ["Дневник", "Карты", "Компас", "Помощь"]
+	const pages = ["Main", "Maps", "Compass", "Help"]
 	const icons = [
-        { active: <Main />, inactive: <UnMain /> },
-        { active: <Notebook />, inactive: <UnNotebook /> },
+        { active: <Note />, inactive: <UnNote /> },
+        { active: <Maps />, inactive: <UnMaps /> },
         { active: <Compass />, inactive: <UnCompass /> },
         { active: <Info />, inactive: <UnInfo /> },
     ];
@@ -43,7 +45,7 @@ export default function FooterView({currentPage}) {
                     width: "24",
                     height: "24",
                   })}
-                  <FooterText style={{ color: isActive ? 'black' : '#989898' }}>
+                  <FooterText style={{ color: isActive ? '#58AD59' : '#000' }}>
                     {pagesNames[index]}
                   </FooterText>
                 </FooterBlock>

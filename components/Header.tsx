@@ -19,7 +19,7 @@ export default function HeaderView() {
 	const route = useRoute()
 
     const renderSearchIcon = () => {
-        if (["OpenedBlock", "Diary"].includes(route.name)) {
+        if (["OpenedBlock", "Maps"].includes(route.name)) {
             return <ArrowBack width={24} height={24} style={{marginLeft: 10}} />
         }
         else {
@@ -37,7 +37,7 @@ export default function HeaderView() {
 			    {renderSearchIcon()}
 			</Pressable>
 			<LogoContainer>
-				<Pressable onPress={() => navigation.navigate("Diary")}>
+				<Pressable onPress={() => navigation.navigate("Maps")}>
 					<Logo width={logoWidth} height={searchWidth} style={{marginRight: 10}}/>
 				</Pressable>
 			</LogoContainer>
