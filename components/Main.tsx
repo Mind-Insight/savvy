@@ -27,7 +27,7 @@ const Main = () => {
                         key={item.id}
                         title={item.title}
                         text={item.text}
-                        imageSource={<item.imageSource />}
+                        imageSource={item.imageSource}
                     />
                 ))}
             </ScrollView>

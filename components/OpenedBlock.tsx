@@ -10,11 +10,10 @@ export default function OpenedBlock({route}) {
         <View style={styles.container}>
             <View style={styles.block}>
                 <View style={styles.blockImage}>
-                    {React.cloneElement(imageSource, { width: '100%', height: 162 })}
-                    <View style={styles.overlayContainer}>
-                        <Text style={styles.overlayTitle}>{title}</Text>
-                        <Text style={styles.overlayText}>{text}</Text>
-                    </View>
+                    <ImageBackground source={imageSource} resizeMode="cover" style={styles.image}>
+                        <Text style={styles.blockTitle}>{title}</Text>
+                        <Text style={styles.blockText}>{text}</Text>
+                    </ImageBackground>
                 </View>
                 <Text style={styles.content}>{filteredData.content}</Text>
             </View>
@@ -38,6 +37,8 @@ const styles = StyleSheet.create({
 	},
 	blockImage: {
         position: "relative",
+        borderRadius: 40,
+        height: 236
 	},
 	imageTitle: {
 		fontFamily: "sans-serif",
@@ -60,28 +61,38 @@ const styles = StyleSheet.create({
 	content: {
 		padding: 16,
 		paddingTop: 24,
-		color: "#323232",
+		color: "#1D1D1D",
 		fontSize: 16,
+		fontWeight: 'normal'
 	},
-    overlayContainer: {
-        width: "70%",
-        position: "relative",
-        left: 16,
-        bottom: 16,
+    image: {
+        flex: 1,
+        height: 236,
     },
-    overlayTitle: {
-        fontFamily: "sans-serif",
-        position: "absolute",
-        bottom: 28,
-        fontSize: 30,
-        color: "white",
-        fontWeight: "bold",
+    blockTitle: {
+        position: 'absolute',
+        color: '#FFF',
+        fontSize: 20,
+        fontWeight: 'normal',
+        padding: 25,
+        paddingVertical: 14,
+        backgroundColor: '#00000010',
+        borderRadius: 40,
+        top: 14,
+        left: 13
     },
-    overlayText: {
-        fontSize: 10,
-        bottom: 6,
-        color: "white",
-        fontWeight: "light",
-        position: "absolute",
+    blockText: {
+        position: 'absolute',
+        color: '#FFF',
+        fontSize: 18,
+        fontWeight: 'regular',
+        padding: 25,
+        paddingVertical: 9,
+        backgroundColor: '#00000010',
+        borderRadius: 40,
+        bottom: 12,
+        left: 13
     }
 })
+
+//{React.cloneElement(imageSource, { width: '100%', height: 162 })}
